@@ -3,7 +3,7 @@ export function totalScore(input: string): number {
 
   const scores = rounds.map((round) => {
     const outcomeScore = getOutcomeScore(round);
-    const myShape = round.split(" ")[1];
+    const myShape = getShape(round);
     const shapeScore = getShapeScore(myShape);
 
     return outcomeScore + shapeScore;
@@ -12,14 +12,50 @@ export function totalScore(input: string): number {
   return scores.reduce((sum, score) => sum + score, 0);
 }
 
-function getOutcomeScore(round: string): number {
+function getShape(round: string): string {
+  const outcome = round.split(" ")[1];
+  const opponentShape = round.split(" ")[0];
+
+  // Lost
+  if (outcome === "X") {
+    if (opponentShape === "A") {
+      return "C";
+    }
+    if (opponentShape === "B") {
+      return "A";
+    }
+    if (opponentShape === "C") {
+      return "B";
+    }
+  }
+
   // Won
-  if (round === "A Y" || round === "B Z" || round === "C X") {
+  if (outcome === "Z") {
+    if (opponentShape === "A") {
+      return "B";
+    }
+    if (opponentShape === "B") {
+      return "C";
+    }
+    if (opponentShape === "C") {
+      return "A";
+    }
+  }
+
+  // Draw
+  return opponentShape;
+}
+
+function getOutcomeScore(round: string): number {
+  const outcome = round.split(" ")[1];
+
+  // Won
+  if (outcome === "Z") {
     return 6;
   }
 
   // Lost
-  if (round === "A Z" || round === "B X" || round === "C Y") {
+  if (outcome === "X") {
     return 0;
   }
 
@@ -29,12 +65,12 @@ function getOutcomeScore(round: string): number {
 
 function getShapeScore(shape: string): number {
   // Rock
-  if (shape === "X") {
+  if (shape === "A") {
     return 1;
   }
 
   // Paper
-  if (shape === "Y") {
+  if (shape === "B") {
     return 2;
   }
 

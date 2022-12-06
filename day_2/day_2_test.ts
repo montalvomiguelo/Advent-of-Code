@@ -9,5 +9,8 @@ Deno.test("Day 2: Rock Paper Scissors", () => {
   `;
 
   // Part 1
-  assertEquals(totalScore(input), 15);
+  // assertEquals(totalScore(input), 15);
+
+  // Part 2
+  assertEquals(totalScore(input), 12);
 });
