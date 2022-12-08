@@ -1,5 +1,8 @@
 import { assertEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts";
-import { numberOfAssignmentPairs } from "./day_4.ts";
+import {
+  numberOfAssignmentPairs,
+  numberOfOverlapingAssignmentPairs,
+} from "./day_4.ts";
 
 Deno.test("Day 4: Camp Cleanup", () => {
   const input = `
@@ -13,4 +16,7 @@ Deno.test("Day 4: Camp Cleanup", () => {
 
   // Part 1
   assertEquals(numberOfAssignmentPairs(input), 2);
+
+  // Part 2
+  assertEquals(numberOfOverlapingAssignmentPairs(input), 4);
 });
