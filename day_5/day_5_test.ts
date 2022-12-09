@@ -15,5 +15,8 @@ move 1 from 1 to 2
   `;
 
   // Part 1
-  assertEquals(message(input), "CMZ");
+  // assertEquals(message(input), "CMZ");
+
+  // Part 2
+  assertEquals(message(input), "MCD");
 });

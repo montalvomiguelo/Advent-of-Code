@@ -35,13 +35,13 @@ export function message(input: string): string {
     const stackKeys = Object.keys(stacks);
     const fromKey = stackKeys[from - 1];
     const toKey = stackKeys[to - 1];
-    const fromStack = stacks[fromKey];
-    const toStack = stacks[toKey];
 
-    for (let i = 0; i < proceduresCount; i++) {
-      const value = fromStack.pop() as string;
-      toStack.push(value);
-    }
+    const cratesToMove = stacks[fromKey].splice(
+      stacks[fromKey].length - proceduresCount,
+      proceduresCount,
+    );
+
+    stacks[toKey] = stacks[toKey].concat(cratesToMove);
   });
 
   return Object.values(stacks).reduce(
