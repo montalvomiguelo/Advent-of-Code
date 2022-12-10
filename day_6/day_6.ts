@@ -9,10 +9,12 @@ export function startOfPacket(input: string): number {
   const data = input.trim();
   let result = -1;
   let startIndex = 0;
-  const characterCount = 4;
+  const characterCount = 14;
 
   while (result === -1) {
-    const lastFour = new Set(data.slice(startIndex, characterCount + startIndex));
+    const lastFour = new Set(
+      data.slice(startIndex, characterCount + startIndex),
+    );
     if (lastFour.size === characterCount) {
       result = startIndex + characterCount;
     }

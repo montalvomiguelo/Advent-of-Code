@@ -3,9 +3,9 @@ import { startOfPacket } from "./day_6.ts";
 
 Deno.test("Day 6: Tuning Trouble", () => {
   const input = `
-    bvwbjplbgvbhsrlpgdmjqwftvncz
+    mjqjpqmgbljsphdztnvjfqwrcgsmlb
   `;
 
   // Part 1
-  assertEquals(startOfPacket(input), 5);
+  assertEquals(startOfPacket(input), 19);
 });
