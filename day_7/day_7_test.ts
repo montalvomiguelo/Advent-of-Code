@@ -28,6 +28,6 @@ Deno.test("Day 7: No Space Left On Device", () => {
     7214296 k
   `;
 
-  // Part 1
-  assertEquals(dirFileSizes(input), 95437);
+  // Part 2
+  assertEquals(dirFileSizes(input), 24933642);
 });

@@ -60,14 +60,21 @@ export function dirFileSizes(input: string): number {
     }
   });
 
-  const sizeValues = Object.values(directorySizes);
+  const totalSpace = 70000000;
+  const requiredSpace = 30000000;
+  const sizeValues = Object.values(directorySizes).sort((a, b) => a - b);
+  const usedSpace = sizeValues[sizeValues.length - 1];
+  const availableSpace = totalSpace - usedSpace;
 
-  const filteredSizeValues = sizeValues.filter((size) => size <= 100000);
+  for (let i = 0; i < sizeValues.length; i++) {
+    const size = availableSpace + sizeValues[i];
 
-  return filteredSizeValues.reduce(
-    (accumulator, size) => accumulator + size,
-    0,
-  );
+    if (size >= requiredSpace) {
+      return sizeValues[i];
+    }
+  }
+
+  return 0;
 }
 
 const input = await Deno.readTextFile("./input.txt");
