@@ -10,8 +10,7 @@
 export function visibleTrees(input: string): number {
   const rows = input.trim().split("\n").map((row) => row.trim().split(""));
   const rowsCount = rows.length;
-  const edgesCount = (rowsCount - 1) * 4;
-  let visibleItemsCount = 0;
+  const visibleTrees: number[] = [];
 
   for (let i = 1; i < rowsCount - 1; i++) {
     const row = rows[i];
@@ -20,44 +19,71 @@ export function visibleTrees(input: string): number {
       const item = +row[j];
 
       const topItems = [];
-      for (let k = 0; k < i; k++) {
+      for (let k = i - 1; k >= 0; k--) {
         const siblingItem = +rows[k][j];
         topItems.push(siblingItem);
       }
-      const maxTopSibling = Math.max(...topItems);
-      const isTopVisible = maxTopSibling < item;
+      const visibleSiblingsTop = countVisibleSiblings(topItems, item);
 
       const rightItems = [];
-      for (let k = rowsCount - 1; k > j; k--) {
+      for (let k = j + 1; k < rowsCount; k++) {
         const siblingItem = +rows[i][k];
         rightItems.push(siblingItem);
       }
-      const maxRightSibling = Math.max(...rightItems);
-      const isRightVisible = maxRightSibling < item;
+      const visibleSiblingsRight = countVisibleSiblings(rightItems, item);
 
       const bottomItems = [];
-      for (let k = rowsCount - 1; k > i; k--) {
+      for (let k = i + 1; k < rowsCount; k++) {
         const siblingItem = +rows[k][j];
         bottomItems.push(siblingItem);
       }
-      const maxBottomSibling = Math.max(...bottomItems);
-      const isBottomVisible = maxBottomSibling < item;
+      const visibleSiblingsBottom = countVisibleSiblings(bottomItems, item);
 
       const leftItems = [];
-      for (let k = 0; k < j; k++) {
+      for (let k = j - 1; k >= 0; k--) {
         const siblingItem = +rows[i][k];
         leftItems.push(siblingItem);
       }
-      const maxLeftSibling = Math.max(...leftItems);
-      const isLeftVisible = maxLeftSibling < item;
+      const visibleSiblingsLeft = countVisibleSiblings(leftItems, item);
 
-      if (isTopVisible || isRightVisible || isBottomVisible || isLeftVisible) {
-        visibleItemsCount += 1;
-      }
+      const scenicScore = visibleSiblingsTop * visibleSiblingsRight *
+        visibleSiblingsBottom * visibleSiblingsLeft;
+
+      visibleTrees.push(scenicScore);
     }
   }
 
-  return edgesCount + visibleItemsCount;
+  return Math.max(...visibleTrees);
+}
+
+function countVisibleSiblings(siblingItems: number[], item: number): number {
+  const firstSibling = siblingItems[0];
+  let visibleSiblings = 0;
+
+  if (firstSibling > item) {
+    return visibleSiblings;
+  }
+
+  if (firstSibling === item) {
+    return visibleSiblings = 1;
+  }
+
+  let i = 0;
+  let sibling = siblingItems[i];
+  let isVisible = true;
+
+  while (sibling >= 0 && isVisible) {
+    visibleSiblings += 1;
+
+    if (sibling >= item) {
+      isVisible = false;
+    }
+
+    i += 1;
+    sibling = siblingItems[i];
+  }
+
+  return visibleSiblings;
 }
 
 const input = await Deno.readTextFile("./input.txt");

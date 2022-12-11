@@ -10,6 +10,6 @@ Deno.test("Day 8: Treetop Tree House", () => {
     35390
   `;
 
-  // Part 1
-  assertEquals(visibleTrees(input), 21);
+  // Part 2
+  assertEquals(visibleTrees(input), 8);
 });
