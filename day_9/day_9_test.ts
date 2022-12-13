@@ -13,9 +13,6 @@ Deno.test("Day 9: Rope Bridge", () => {
     R 2
   `;
 
-  // Part 1
-  assertEquals(result(input), 13);
+  // Part 2
+  assertEquals(result(input), 1);
 });
-
-const input = await Deno.readTextFile("./input.txt");
-console.log(result(input));
