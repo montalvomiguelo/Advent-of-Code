@@ -2,7 +2,7 @@ import { assertEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts";
 import { result } from "./day_10.ts";
 
 Deno.test("Day 10: Cathode-Ray Tube", () => {
-  const elves = `
+  const input = `
     addx 15
     addx -11
     addx 6
@@ -151,6 +151,15 @@ Deno.test("Day 10: Cathode-Ray Tube", () => {
     noop
   `;
 
-  // Part 1
-  assertEquals(result(elves), 13140);
+  const expected = `
+##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######.....
+`.replace("\n", "");
+
+  // Part 2
+  assertEquals(result(input), expected);
 });
