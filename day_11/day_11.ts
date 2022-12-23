@@ -11,7 +11,12 @@ export function result(input: string): number {
     worryLevels[i] = items;
   }
 
-  for (let i = 0; i < 20; i++) {
+  const divisor = data.map((rows) => parseInt(rows[3].split(" ")[5])).reduce(
+    (accumulator, number) => accumulator * number,
+    1,
+  );
+
+  for (let i = 0; i < 10000; i++) {
     for (let j = 0; j < data.length; j++) {
       const rows = data[j];
       const operationRow = rows[2].trim();
@@ -33,19 +38,20 @@ export function result(input: string): number {
           ? item + item
           : item + parseInt(operationNumber);
 
-        const result = Math.floor(operation / 3);
+        const result = operation / 1;
         const test = result % testNumber === 0;
 
         const nextMonkeyRow = test ? rows[4] : rows[5];
         const nextMonkeyNumber = nextMonkeyRow.split(" ")[9];
 
         worryLevels[j].splice(0, 1);
-        worryLevels[nextMonkeyNumber].push(result);
+        worryLevels[nextMonkeyNumber].push(result % divisor);
       }
     }
   }
 
-  const inspections = Object.values(inspectionsCount).sort((a, b) => b -a).slice(0, 2);
+  const inspections = Object.values(inspectionsCount).sort((a, b) => b - a)
+    .slice(0, 2);
 
   return inspections[0] * inspections[1];
 }
