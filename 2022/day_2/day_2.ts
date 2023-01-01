@@ -78,5 +78,5 @@ function getShapeScore(shape: string): number {
   return 3;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(totalScore(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(totalScore(input));

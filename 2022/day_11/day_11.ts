@@ -56,5 +56,5 @@ export function result(input: string): number {
   return inspections[0] * inspections[1];
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(result(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(result(input));

@@ -77,5 +77,5 @@ export function dirFileSizes(input: string): number {
   return 0;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(dirFileSizes(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(dirFileSizes(input));

@@ -50,5 +50,5 @@ export function message(input: string): string {
   );
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(message(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(message(input));

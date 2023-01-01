@@ -67,6 +67,6 @@ function mapOverlapingPair(pair: string): number[] {
   return result;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(numberOfAssignmentPairs(input));
-console.log(numberOfOverlapingAssignmentPairs(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(numberOfAssignmentPairs(input));
+//console.log(numberOfOverlapingAssignmentPairs(input));

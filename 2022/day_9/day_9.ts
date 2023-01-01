@@ -129,5 +129,5 @@ export function result(input: string): number {
   return new Set(knotMotions["knot9Motions"]).size;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(result(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(result(input));

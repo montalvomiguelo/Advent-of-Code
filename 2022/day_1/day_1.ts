@@ -27,6 +27,6 @@ export function threeElvesWithMostCalories(elves: string): number {
   );
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(elfWithMostCalories(input));
-console.log(threeElvesWithMostCalories(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(elfWithMostCalories(input));
+//console.log(threeElvesWithMostCalories(input));

@@ -48,5 +48,5 @@ export function result(input: string): string {
   return draw;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(result(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(result(input));

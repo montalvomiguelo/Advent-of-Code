@@ -86,5 +86,5 @@ function countVisibleSiblings(siblingItems: number[], item: number): number {
   return visibleSiblings;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(visibleTrees(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(visibleTrees(input));

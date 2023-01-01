@@ -24,5 +24,5 @@ export function startOfPacket(input: string): number {
   return result;
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(startOfPacket(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(startOfPacket(input));

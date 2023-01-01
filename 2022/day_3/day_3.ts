@@ -81,6 +81,6 @@ function getCommonItemInGroup(group: string[]): string {
   return "";
 }
 
-const input = await Deno.readTextFile("./input.txt");
-console.log(sumItemPriorities(input));
-console.log(sumGroupPriorities(input));
+//const input = await Deno.readTextFile("./input.txt");
+//console.log(sumItemPriorities(input));
+//console.log(sumGroupPriorities(input));
