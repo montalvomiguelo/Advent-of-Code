@@ -170,3 +170,38 @@ export class BST {
     return [successor, prevSuccessor];
   }
 }
+
+export class BinarySearchTree {
+  value: number;
+  left: BinarySearchTree | null;
+  right: BinarySearchTree | null;
+
+  constructor(value: number) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  /**
+   * Average O(log n) time | O(log n) space
+   * Worst O(n) time | O(n) space
+   * Where n is the number of nodes in the BinarySearchTree
+   */
+  insert(value: number): BinarySearchTree {
+    if (value < this.value) {
+      if (!this.left) {
+        this.left = new BinarySearchTree(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (!this.right) {
+        this.right = new BinarySearchTree(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+
+    return this;
+  }
+}

@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertExists,
 } from "https://deno.land/std@0.167.0/testing/asserts.ts";
-import { BST } from "./main.ts";
+import { BinarySearchTree, BST } from "./main.ts";
 
 Deno.test("BST", async (t) => {
   await t.step("insert", () => {
@@ -129,5 +129,18 @@ Deno.test("BST", async (t) => {
     assertEquals(root.contains(13), false);
     assertEquals(root.left.value, 14);
     assertEquals(root.left.right, null);
+  });
+});
+
+Deno.test("BinarySearchTree", async (t) => {
+  await t.step("insert", () => {
+    const root = new BinarySearchTree(10);
+    root.left = new BinarySearchTree(5);
+    root.left.left = new BinarySearchTree(2);
+    root.right = new BinarySearchTree(20);
+
+    root.insert(1);
+    assertExists(root.left.left.left);
+    assertEquals(root.left.left.left.value, 1);
   });
 });
