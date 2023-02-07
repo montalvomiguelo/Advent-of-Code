@@ -9,6 +9,11 @@ export class BST {
     this.right = null;
   }
 
+  /**
+   * Average O(log n) time | O(1) space
+   * Worst O(n) time | O(1) space
+   * Where n is the number of nodes in the BST
+   */
   insert(value: number, self: BST = this): BST {
     const newTree = new BST(value);
     let tree: BST | null = self;
@@ -35,6 +40,11 @@ export class BST {
     return this;
   }
 
+  /**
+   * Average O(log n) time | O(1) space
+   * Worst O(n) time | O(1) space
+   * Where n is the number of nodes in the BST
+   */
   contains(value: number, self: BST = this): boolean {
     let tree: BST | null = self;
 
@@ -53,6 +63,11 @@ export class BST {
     return false;
   }
 
+  /**
+   * Average O(log n) time | O(1) space
+   * Worst O(n) time | O(1) space
+   * Where n is the number of nodes in the BST
+   */
   remove(value: number, self: BST = this): BST {
     let tree: BST | null = self;
     let prevTree: BST | null = self;
@@ -130,6 +145,11 @@ export class BST {
     return this;
   }
 
+  /**
+   * Average O(log n) time | O(1) space
+   * Worst O(n) time | O(1) space
+   * Where n is the number of nodes in the BST
+   */
   inOrderSuccessor(tree: BST): Array<BST | null> {
     let successor: BST | null = tree.right;
     let prevSuccessor = tree;
