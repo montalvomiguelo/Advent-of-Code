@@ -204,4 +204,27 @@ export class BinarySearchTree {
 
     return this;
   }
+
+  /**
+   * Average O(log n) time | O(log n) space
+   * Worst O(n) time | O(n) space
+   * Where n is the number of nodes in the BinarySearchTree
+   */
+  contains(value: number): boolean {
+    if (value < this.value) {
+      if (!this.left) {
+        return false;
+      }
+
+      return this.left.contains(value);
+    } else if (value > this.value) {
+      if (!this.right) {
+        return false;
+      }
+
+      return this.right.contains(value);
+    }
+
+    return true;
+  }
 }

@@ -143,4 +143,15 @@ Deno.test("BinarySearchTree", async (t) => {
     assertExists(root.left.left.left);
     assertEquals(root.left.left.left.value, 1);
   });
+
+  await t.step("contains", () => {
+    const root = new BinarySearchTree(10);
+    root.left = new BinarySearchTree(5);
+    root.left.left = new BinarySearchTree(2);
+    root.right = new BinarySearchTree(20);
+
+    root.insert(1);
+    assertEquals(root.contains(20), true);
+    assertEquals(root.contains(21), false);
+  });
 });
