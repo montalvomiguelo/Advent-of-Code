@@ -193,5 +193,28 @@ Deno.test("BinarySearchTree", async (t) => {
     root.remove(12);
     assertEquals(root.contains(12), false);
     assertEquals(root.right.left.left.value, 11);
+
+    root.remove(25);
+    assertEquals(root.contains(25), false);
+    assertEquals(root.right.right.value, 29);
+    assertEquals(root.right.right.right.left, null);
+
+    root.remove(5);
+    assertEquals(root.contains(5), false);
+    assertEquals(root.left.value, 6);
+    assertEquals(root.left.right.left, null);
+
+    root.remove(29);
+    assertEquals(root.contains(29), false);
+    assertEquals(root.right.right.value, 30);
+
+    root.remove(6);
+    assertEquals(root.contains(6), false);
+    assertEquals(root.left.value, 7);
+
+    root.remove(10);
+    assertEquals(root.contains(10), false);
+    assertEquals(root.value, 11);
+    assertEquals(root.right.left.left, null);
   });
 });

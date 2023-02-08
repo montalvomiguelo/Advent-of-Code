@@ -261,9 +261,21 @@ export class BinarySearchTree {
         } else {
           prev.right = this.right;
         }
+      } else if (this.left && this.right) {
+        const inOrderSuccessor = this.inOrderSuccessor(value, this.right);
+        this.value = inOrderSuccessor.value;
+        this.right.remove(this.value)
       }
     }
 
     return this;
+  }
+
+  inOrderSuccessor(value: number, node: BinarySearchTree): BinarySearchTree {
+    if (node.left && value < node.left.value) {
+      return node.inOrderSuccessor(value, node.left)
+    }
+
+    return node;
   }
 }
