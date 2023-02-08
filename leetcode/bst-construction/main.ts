@@ -249,6 +249,18 @@ export class BinarySearchTree {
         } else {
           prev.right = null;
         }
+      } else if (this.left && !this.right) {
+        if (value < prev.value) {
+          prev.left = this.left;
+        } else {
+          prev.right = this.left;
+        }
+      } else if (this.right && !this.left) {
+        if (value < prev.value) {
+          prev.left = this.right;
+        } else {
+          prev.right = this.right;
+        }
       }
     }
 
