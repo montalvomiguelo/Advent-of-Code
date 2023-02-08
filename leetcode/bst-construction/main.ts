@@ -227,4 +227,31 @@ export class BinarySearchTree {
 
     return true;
   }
+
+  /**
+   * Average O(log n) time | O(log n) space
+   * Worst O(n) time | O(n) space
+   * Where n is the number of nodes in the BinarySearchTree
+   */
+  remove(value: number, prev: BinarySearchTree = this): BinarySearchTree {
+    if (value < this.value) {
+      if (this.left) {
+        this.left.remove(value, this);
+      }
+    } else if (value > this.value) {
+      if (this.right) {
+        this.right.remove(value, this);
+      }
+    } else {
+      if (!this.left && !this.right) {
+        if (value < prev.value) {
+          prev.left = null;
+        } else {
+          prev.right = null;
+        }
+      }
+    }
+
+    return this;
+  }
 }

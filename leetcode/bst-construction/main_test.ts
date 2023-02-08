@@ -154,4 +154,36 @@ Deno.test("BinarySearchTree", async (t) => {
     assertEquals(root.contains(20), true);
     assertEquals(root.contains(21), false);
   });
+
+  await t.step("remove", () => {
+    const root = new BinarySearchTree(10);
+    root.left = new BinarySearchTree(5);
+    root.left.left = new BinarySearchTree(2);
+    root.left.left.left = new BinarySearchTree(1);
+    root.left.right = new BinarySearchTree(7);
+    root.left.right.left = new BinarySearchTree(6);
+    root.left.right.right = new BinarySearchTree(8);
+    root.left.right.right.right = new BinarySearchTree(8);
+    root.right = new BinarySearchTree(15);
+    root.right.left = new BinarySearchTree(13);
+    root.right.left.left = new BinarySearchTree(12);
+    root.right.left.left.left = new BinarySearchTree(11);
+    root.right.left.right = new BinarySearchTree(14);
+    root.right.right = new BinarySearchTree(20);
+    root.right.right.right = new BinarySearchTree(25);
+    root.right.right.right.left = new BinarySearchTree(22);
+    root.right.right.right.left.left = new BinarySearchTree(21);
+    root.right.right.right.right = new BinarySearchTree(30);
+    root.right.right.right.right.left = new BinarySearchTree(29);
+    root.right.right.right.right.right = new BinarySearchTree(31);
+    root.right.right.right.right.right.right = new BinarySearchTree(32);
+
+    root.remove(1);
+    assertEquals(root.contains(1), false);
+    assertEquals(root.left.left.left, null);
+
+    root.remove(32);
+    assertEquals(root.contains(32), false);
+    assertEquals(root.right.right.right.right.right.right, null);
+  });
 });
