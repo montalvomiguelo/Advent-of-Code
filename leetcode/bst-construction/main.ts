@@ -252,28 +252,41 @@ export class BinarySearchTree {
       } else if (this.left && !this.right) {
         if (value < prev.value) {
           prev.left = this.left;
-        } else {
+        } else if (value > prev.value) {
           prev.right = this.left;
+        } else {
+          this.value = this.left.value;
+          this.right = this.left.right;
+          this.left = this.left.left;
         }
       } else if (this.right && !this.left) {
         if (value < prev.value) {
           prev.left = this.right;
-        } else {
+        } else if (value > prev.value) {
           prev.right = this.right;
+        } else {
+          this.value = this.right.value;
+          this.left = this.right.left;
+          this.right = this.right.right;
         }
       } else if (this.left && this.right) {
         const inOrderSuccessor = this.inOrderSuccessor(value, this.right);
         this.value = inOrderSuccessor.value;
-        this.right.remove(this.value)
+        this.right.remove(this.value, this);
       }
     }
 
     return this;
   }
 
+  /**
+   * Average O(log n) time | O(log n) space
+   * Worst O(n) time | O(n) space
+   * Where n is the number of nodes in the BinarySearchTree
+   */
   inOrderSuccessor(value: number, node: BinarySearchTree): BinarySearchTree {
     if (node.left && value < node.left.value) {
-      return node.inOrderSuccessor(value, node.left)
+      return node.inOrderSuccessor(value, node.left);
     }
 
     return node;
