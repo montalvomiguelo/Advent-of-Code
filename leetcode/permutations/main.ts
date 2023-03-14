@@ -14,9 +14,9 @@ function permutationsHelper(
   if (!array.length && currentPermutation.length) {
     permutations.push(currentPermutation);
   } else {
-    for (let i = 0; i < array.length; i++) {
-      const newArray = array.slice(0, i).concat(array.slice(i + 1));
-      const newPermutation = currentPermutation.concat([array[i]]);
+    for (let i = 0; i < array.length; i++) { // O(n)
+      const newArray = array.slice(0, i).concat(array.slice(i + 1)); // O(n)
+      const newPermutation = currentPermutation.concat([array[i]]); // O(n)
       permutationsHelper(newArray, newPermutation, permutations);
     }
   }
